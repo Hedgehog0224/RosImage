@@ -39,7 +39,7 @@ WORKDIR /root/catkin_ws/src
 
 # WORKDIR /root/catkin_ws_joy/src
 # RUN git clone https://github.com/ros-drivers/joystick_drivers.git
-RUN git clone https://github.com/Hedgehog0224/scripts.git
+# RUN git clone https://github.com/Hedgehog0224/scripts.git
 
 WORKDIR ~/
 COPY . .
