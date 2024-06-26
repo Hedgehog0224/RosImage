@@ -2,16 +2,11 @@ source /opt/ros/$ROS_DISTRO/setup.bash
 source $PROJECT_DIR/devel/setup.bash
 export ROS_IP=$(hostname -i)
 
-cd /root/catkin_ws && catkin_make ; cd - 
+cd /root/ && rm -r catkin_ws && git clone https://github.com/Hedgehog0224/catkin_ws.git
+rm -r /root/catkin_ws/build
+rm -r /root/catkin_ws/devel
+catkin_make
 
-# cd /root/catkin_ws_joy && catkin_make ; cd - 
-# source /root/catkin_ws_joy/devel/setup.bash
-
-cd /root/ && git clone https://github.com/Hedgehog0224/catkin_ws.git
 source /root/catkin_ws/devel/setup.bash
-
-roscore &
-rosrun rplidar_ros rplidarNode &
-rosrun joy joy_node &
 
 cd /root/catkin_ws/scr/ && rosnode list
