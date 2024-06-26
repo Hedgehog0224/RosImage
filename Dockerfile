@@ -30,7 +30,7 @@ RUN apt install -y ros-noetic-rplidar-ros
 
 COPY .bashrc /root/
 
-RUN mkdir /root/catkin_ws
+# RUN mkdir /root/catkin_ws
 ENV PROJECT_DIR=/root/catkin_ws
 # ENV PROJECT_DIR=/root/catkin_ws_joy
 
