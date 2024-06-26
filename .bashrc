@@ -5,7 +5,7 @@ export ROS_IP=$(hostname -i)
 cd /root/ && rm -r catkin_ws && git clone https://github.com/Hedgehog0224/catkin_ws.git
 rm -r /root/catkin_ws/build
 rm -r /root/catkin_ws/devel
-catkin_make
+cd /root/catkin_ws/ && catkin_make
 
 source /root/catkin_ws/devel/setup.bash
 
