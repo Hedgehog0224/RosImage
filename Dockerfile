@@ -22,6 +22,7 @@ RUN python3 -m pip install evdev
 RUN python3 -m pip install RPi.GPIO
 RUN python3 -m pip install pyserial
 RUN python3 -m pip install board
+RUN python3 -m pip install opencv-python
 RUN pip3 install adafruit-circuitpython-pca9685
 
 RUN apt install -y ros-noetic-joy
