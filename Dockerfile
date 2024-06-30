@@ -32,6 +32,6 @@ COPY .bashrc /root/
 ENV ROS_MASTER_URI=${ros_master_uri}
 
 WORKDIR ~/
-COPY . .
+# COPY . .
 
 WORKDIR /root/catkin_ws
