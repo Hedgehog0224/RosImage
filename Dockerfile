@@ -5,7 +5,7 @@ ARG host_ip
 ARG ros_master_uri
 RUN apt update
 
-ENV TZ=Europe/Kiev
+ENV TZ=Europe
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu focal main" > /etc/apt/sources.list.d/ros-latest.list'
@@ -23,26 +23,13 @@ RUN python3 -m pip install RPi.GPIO
 RUN python3 -m pip install pyserial
 RUN python3 -m pip install board
 RUN pip3 install adafruit-circuitpython-pca9685
-RUN pip3 install pyqt5
 
 RUN apt install -y ros-noetic-joy
 RUN apt install -y ros-noetic-rplidar-ros
 
 COPY .bashrc /root/
 
-# RUN mkdir /root/catkin_ws
-ENV PROJECT_DIR=/root/catkin_ws
-# ENV PROJECT_DIR=/root/catkin_ws_joy
-
 ENV ROS_MASTER_URI=${ros_master_uri}
-
-WORKDIR /root/catkin_ws/src
-# RUN git clone https://github.com/Slamtec/rplidar_ros.git
-# RUN git clone https://github.com/Hedgehog0224/scripts.git
-
-# WORKDIR /root/catkin_ws_joy/src
-# RUN git clone https://github.com/ros-drivers/joystick_drivers.git
-# RUN git clone https://github.com/Hedgehog0224/scripts.git
 
 WORKDIR ~/
 COPY . .
