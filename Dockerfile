@@ -17,13 +17,13 @@ ENV ROS_DISTRO noetic
 RUN apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
 RUN apt install -y nano
 RUN apt install -y python3-pip
-RUN apt-get install -y libgl1-mesa-dev
+# RUN apt-get install -y libgl1-mesa-dev
 
 RUN python3 -m pip install evdev
 RUN python3 -m pip install RPi.GPIO
 RUN python3 -m pip install pyserial
 RUN python3 -m pip install board
-RUN python3 -m pip install opencv-python
+# RUN python3 -m pip install opencv-python
 RUN pip3 install adafruit-circuitpython-pca9685
 
 RUN apt install -y ros-noetic-joy
