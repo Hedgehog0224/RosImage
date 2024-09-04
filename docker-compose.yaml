@@ -1,8 +1,0 @@
-services:
-  ros:
-    image: hedgehog0624/rosimage:v4
-    volumes:
-      - ros-data:~/scr
-
-volumes:
-  ros-data:
