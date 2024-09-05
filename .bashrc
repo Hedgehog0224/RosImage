@@ -7,4 +7,4 @@ cd /root/catkin_ws/ && catkin_make && cd -
 
 source /root/catkin_ws/devel/setup.bash
 
-cd /root/catkin_ws/scr/ && rosnode list
+cd /root/catkin_ws/scr/
