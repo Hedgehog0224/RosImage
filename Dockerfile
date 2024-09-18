@@ -1,18 +1,40 @@
-FROM utrarobosoccer/noetic:latest
+# This is an auto generated Dockerfile for ros:ros-base
+# generated from docker_images/create_ros_image.Dockerfile.em
+FROM ros:noetic-ros-core-focal
+COPY /.Xauthority /
+# install bootstrap tools
+RUN apt-get update && apt-get install --no-install-recommends -y \
+    build-essential \
+    python3-rosdep \
+    python3-rosinstall \
+    python3-vcstools \
+    firefox \
+    xauth \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN apt update
+# bootstrap rosdep
+RUN rosdep init && \
+  rosdep update --rosdistro $ROS_DISTRO
 
-RUN apt install -y python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
-RUN apt install -y nano
-RUN apt install -y git
-RUN apt install -y python3-pip
+# install ros packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ros-noetic-ros-base=1.5.0-1* \
+    nano\
+    git\
+    python3-pip\
+    ros-noetic-joy\
+    ros-noetic-rplidar-ros\
+    rviz\
+    && rm -rf /var/lib/apt/lists/*
+
 RUN python3 -m pip install evdev
 RUN python3 -m pip install RPi.GPIO
 RUN python3 -m pip install pyserial
 RUN python3 -m pip install board
 RUN pip3 install adafruit-circuitpython-pca9685
-RUN apt install -y ros-noetic-joy
-RUN apt install -y ros-noetic-rplidar-ros
-
+RUN pip3 install adafruit-circuitpython-motor
+RUN pip3 install visual-kinematics
+EXPOSE 8887
+# CMD firefox
+# CMD rviz
 COPY .bashrc /root/
-WORKDIR /root/catkin_ws
